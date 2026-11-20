@@ -1,0 +1,16 @@
+// ROYAL GAMING - VIRTUAL SPIN WHEEL
+
+function spinWheel() {
+    const rewards = [5, 10, 15, 20, 25, 50];
+    const reward = rewards[Math.floor(Math.random() * rewards.length)];
+
+    let coins = Number(localStorage.getItem("royalCoins")) || 100;
+
+    coins += reward;
+
+    localStorage.setItem("royalCoins", coins);
+
+    alert("Congratulations! You won " + reward + " Virtual Coins!");
+
+    document.getElementById("coins").innerText = coins;
+}
