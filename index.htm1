@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Royal Gaming</title>
+
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: #090909;
+  color: white;
+  font-family: Arial, sans-serif;
+  text-align: center;
+}
+
+header {
+  background: #151515;
+  padding: 25px;
+  border-bottom: 2px solid gold;
+}
+
+h1 {
+  color: gold;
+  font-size: 32px;
+}
+
+.coin {
+  color: gold;
+  font-size: 23px;
+  margin: 25px;
+}
+
+.card {
+  background: #1b1b1b;
+  border: 1px solid gold;
+  border-radius: 15px;
+  margin: 20px;
+  padding: 25px;
+}
+
+button {
+  background: gold;
+  color: black;
+  border: none;
+  padding: 14px 25px;
+  border-radius: 10px;
+  font-size: 17px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+button:active {
+  transform: scale(.96);
+}
+
+footer {
+  color: #aaa;
+  padding: 25px;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <h1>👑 ROYAL GAMING</h1>
+  <p>Welcome to Royal Gaming</p>
+</header>
+
+<div class="coin">
+  🪙 Virtual Coins: <span id="coins">100</span>
+</div>
+
+<div class="card">
+  <h2>🎮 Coin Collector</h2>
+  <p>Tap the button to collect virtual coins!</p>
+  <button onclick="collectCoin()">
+    COLLECT COIN
+  </button>
+</div>
+
+<div class="card">
+  <h2>🎯 Number Challenge</h2>
+  <p>Guess a number between 1 and 5.</p>
+  <input id="guess" type="number"
+  min="1" max="5" placeholder="Enter number">
+  <br><br>
+  <button onclick="playGame()">PLAY</button>
+  <p id="result"></p>
+</div>
+
+<footer>
+  Royal Gaming © 2026
+  <p>Entertainment Only | Virtual Coins Only</p>
+</footer>
+
+<script>
+let coins = 100;
+
+function updateCoins() {
+  document.getElementById("coins").innerText = coins;
+}
+
+function collectCoin() {
+  coins += 5;
+  updateCoins();
+}
+
+function playGame() {
+  let guess = Number(document.getElementById("guess").value);
+  let answer = Math.floor(Math.random() * 5) + 1;
+
+  if (guess < 1 || guess > 5) {
+    document.getElementById("result").innerText =
+      "Enter a number from 1 to 5.";
+    return;
+  }
+
+  if (guess === answer) {
+    coins += 10;
+    document.getElementById("result").innerText =
+      "🎉 Correct! You earned 10 coins!";
+  } else {
+    document.getElementById("result").innerText =
+      "Try again! The answer was " + answer;
+  }
+
+  updateCoins();
+}
+</script>
+
+</body>
+</html>
